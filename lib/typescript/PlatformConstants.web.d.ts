@@ -1,4 +1,4 @@
 declare const _default: {
-  readonly forceTouchAvailable: boolean;
+    readonly forceTouchAvailable: boolean;
 };
 export default _default;

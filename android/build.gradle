@@ -47,6 +47,14 @@ android {
         versionName "1.0"
     }
 
+      compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
     // Include "lib/" as sources, unfortunately react-native link can't handle
     // setting up alternative gradle modules. We still have "lib" defined as a
     // standalone gradle module just to be used in AndroidNativeExample

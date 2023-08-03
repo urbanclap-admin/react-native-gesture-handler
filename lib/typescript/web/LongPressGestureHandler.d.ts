@@ -2,11 +2,10 @@ import PressGestureHandler from './PressGestureHandler';
 import { Config } from './GestureHandler';
 import { HammerInputNames } from './constants';
 declare class LongPressGestureHandler extends PressGestureHandler {
-  get minDurationMs(): number;
-  get maxDist(): number | undefined;
-  updateHasCustomActivationCriteria({ maxDistSq }: Config): boolean;
-  getConfig():
-    | Partial<{
+    get minDurationMs(): number;
+    get maxDist(): number | undefined;
+    updateHasCustomActivationCriteria({ maxDistSq }: Config): boolean;
+    getConfig(): Partial<{
         enabled: boolean;
         minPointers: number;
         maxPointers: number;
@@ -25,15 +24,14 @@ declare class LongPressGestureHandler extends PressGestureHandler {
         activeOffsetYStart: number;
         activeOffsetYEnd: number;
         waitFor: any[] | null;
-      }>
-    | {
+    }> | {
         shouldCancelWhenOutside: boolean;
         maxDistSq: number;
-      };
-  getHammerConfig(): {
-    time: number;
-    pointers: number | undefined;
-  };
-  getState(type: keyof typeof HammerInputNames): 1 | 4 | 5;
+    };
+    getHammerConfig(): {
+        time: number;
+        pointers: number | undefined;
+    };
+    getState(type: keyof typeof HammerInputNames): 1 | 4 | 5;
 }
 export default LongPressGestureHandler;

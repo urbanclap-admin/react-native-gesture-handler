@@ -1,5 +1,5 @@
 declare type PlatformConstants = {
-  forceTouchAvailable: boolean;
+    forceTouchAvailable: boolean;
 };
 declare const _default: PlatformConstants;
 export default _default;

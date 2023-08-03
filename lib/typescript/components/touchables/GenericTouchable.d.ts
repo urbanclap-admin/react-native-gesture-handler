@@ -1,13 +1,6 @@
 import { Component } from 'react';
-import {
-  StyleProp,
-  ViewStyle,
-  TouchableWithoutFeedbackProps,
-} from 'react-native';
-import {
-  GestureEvent,
-  HandlerStateChangeEvent,
-} from '../../handlers/gestureHandlerCommon';
+import { StyleProp, ViewStyle, TouchableWithoutFeedbackProps } from 'react-native';
+import { GestureEvent, HandlerStateChangeEvent } from '../../handlers/gestureHandlerCommon';
 import { NativeViewGestureHandlerPayload } from '../../handlers/NativeViewGestureHandler';
 import { TouchableNativeFeedbackExtraProps } from './TouchableNativeFeedback.android';
 /**
@@ -18,62 +11,56 @@ import { TouchableNativeFeedbackExtraProps } from './TouchableNativeFeedback.and
  * finishes in UNDETERMINED state.
  */
 export declare const TOUCHABLE_STATE: {
-  readonly UNDETERMINED: 0;
-  readonly BEGAN: 1;
-  readonly MOVED_OUTSIDE: 2;
+    readonly UNDETERMINED: 0;
+    readonly BEGAN: 1;
+    readonly MOVED_OUTSIDE: 2;
 };
 declare type TouchableState = typeof TOUCHABLE_STATE[keyof typeof TOUCHABLE_STATE];
 export interface GenericTouchableProps extends TouchableWithoutFeedbackProps {
-  onPress?: () => void;
-  onPressIn?: () => void;
-  onPressOut?: () => void;
-  onLongPress?: () => void;
-  nativeID?: string;
-  shouldActivateOnStart?: boolean;
-  disallowInterruption?: boolean;
-  containerStyle?: StyleProp<ViewStyle>;
+    onPress?: () => void;
+    onPressIn?: () => void;
+    onPressOut?: () => void;
+    onLongPress?: () => void;
+    nativeID?: string;
+    shouldActivateOnStart?: boolean;
+    disallowInterruption?: boolean;
+    containerStyle?: StyleProp<ViewStyle>;
 }
 interface InternalProps {
-  extraButtonProps: TouchableNativeFeedbackExtraProps;
-  onStateChange?: (oldState: TouchableState, newState: TouchableState) => void;
+    extraButtonProps: TouchableNativeFeedbackExtraProps;
+    onStateChange?: (oldState: TouchableState, newState: TouchableState) => void;
 }
 declare type Timeout = ReturnType<typeof setTimeout> | null | undefined;
 /**
  * GenericTouchable is not intented to be used as it is.
  * Should be treated as a source for the rest of touchables
  */
-export default class GenericTouchable extends Component<
-  GenericTouchableProps & InternalProps
-> {
-  static defaultProps: {
-    delayLongPress: number;
-    extraButtonProps: {
-      rippleColor: string;
-      exclusive: boolean;
+export default class GenericTouchable extends Component<GenericTouchableProps & InternalProps> {
+    static defaultProps: {
+        delayLongPress: number;
+        extraButtonProps: {
+            rippleColor: string;
+            exclusive: boolean;
+        };
     };
-  };
-  pressInTimeout: Timeout;
-  pressOutTimeout: Timeout;
-  longPressTimeout: Timeout;
-  longPressDetected: boolean;
-  pointerInside: boolean;
-  STATE: TouchableState;
-  handlePressIn(): void;
-  handleMoveOutside(): void;
-  handleGoToUndetermined(): void;
-  componentDidMount(): void;
-  reset(): void;
-  moveToState(newState: TouchableState): void;
-  onGestureEvent: ({
-    nativeEvent: { pointerInside },
-  }: GestureEvent<NativeViewGestureHandlerPayload>) => void;
-  onHandlerStateChange: ({
-    nativeEvent,
-  }: HandlerStateChangeEvent<NativeViewGestureHandlerPayload>) => void;
-  onLongPressDetected: () => void;
-  componentWillUnmount(): void;
-  onMoveIn(): void;
-  onMoveOut(): void;
-  render(): JSX.Element;
+    pressInTimeout: Timeout;
+    pressOutTimeout: Timeout;
+    longPressTimeout: Timeout;
+    longPressDetected: boolean;
+    pointerInside: boolean;
+    STATE: TouchableState;
+    handlePressIn(): void;
+    handleMoveOutside(): void;
+    handleGoToUndetermined(): void;
+    componentDidMount(): void;
+    reset(): void;
+    moveToState(newState: TouchableState): void;
+    onGestureEvent: ({ nativeEvent: { pointerInside }, }: GestureEvent<NativeViewGestureHandlerPayload>) => void;
+    onHandlerStateChange: ({ nativeEvent, }: HandlerStateChangeEvent<NativeViewGestureHandlerPayload>) => void;
+    onLongPressDetected: () => void;
+    componentWillUnmount(): void;
+    onMoveIn(): void;
+    onMoveOut(): void;
+    render(): JSX.Element;
 }
 export {};
