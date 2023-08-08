@@ -38,7 +38,7 @@ repositories {
 }
 
 android {
-    compileSdkVersion safeExtGet("compileSdkVersion", 28)
+    compileSdkVersion safeExtGet("compileSdkVersion", 30)
 
     defaultConfig {
         minSdkVersion safeExtGet('minSdkVersion', 16)
